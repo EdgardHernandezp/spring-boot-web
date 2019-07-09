@@ -13,13 +13,13 @@ import com.bolsadeideas.springboot.web.app.models.Usuario;
 @Controller
 @RequestMapping("/app")
 public class IndexController {
-	
-	@GetMapping(value = {"/index", "/", "/home"})
+
+	@GetMapping(value = { "/index", "/", "/home" })
 	public String index(Model model) {
 		model.addAttribute("titulo", "MERWEBO DIJE!");
 		return "index";
 	}
-	
+
 	@GetMapping(value = "/perfil")
 	public String perfil(Model model) {
 		Usuario usuario = new Usuario();
@@ -30,14 +30,18 @@ public class IndexController {
 		model.addAttribute("titulo", "Que dice mi bro, " + usuario.getNombre());
 		return "perfil";
 	}
-	
+
 	@GetMapping(value = "/listar")
 	public String listar(Model model) {
 		List<Usuario> usuarios = new ArrayList<>();
+		usuarios.add(new Usuario("Mamerto", "Ibarreto", "mamerto@gmail.com"));
+		usuarios.add(new Usuario("Benito", "Tocamelo", "benito@gmail.com"));
+		usuarios.add(new Usuario("Debora", "Meltroso", "debora@gmail.com"));
+
 		model.addAttribute("titulo", "Un coñazo de gente");
 		model.addAttribute("usuarios", usuarios);
 
 		return "listar";
 	}
-	
+
 }
