@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeLeaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}">Insert title here</title>
+</head>
+<body>
+<h1 th:text="${titulo}"></h1>
+
+<ul>
+<li><a th:href="@{/variables/string/} + 'PrimeraRuta'">Primera Ruta</a></li>
+<li><a th:href="@{/variables/string/} + 'Segunda Ruta' + '/' + '55'">Primera Ruta</a></li>
+</ul>
+</body>
+</html>
