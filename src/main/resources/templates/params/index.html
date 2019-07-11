@@ -7,8 +7,12 @@
 <body>
 <h1>Envia parametro del request</h1>
 <ul>
+
 <li><a th:href="@{/params/string(texto='Holiwis')}">Holiwis</a></li>
 <li><a th:href="@{/params/string(texto='Que lo que')}">QueLoQue</a></li>
+<li><a th:href="@{/params/mix-params(saludo='Que lo que', numero=7)}">QueLoQue, number 7</a></li>
+<li><a th:href="@{/params/mix-params-request(saludo='Que lo que', numero=7)}">QueLoQue, number 7 (Con HttpServletRequest)</a></li>
+
 </ul>
 </body>
 </html>
