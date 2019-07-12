@@ -3,6 +3,7 @@ package com.bolsadeideas.springboot.web.app.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +15,17 @@ import com.bolsadeideas.springboot.web.app.models.Usuario;
 @Controller
 @RequestMapping("/app")
 public class IndexController {
-
+	
+	@Value("${texto.indexController.index.titulo}")
+	private String textoIndex;
+	@Value("${texto.indexController.perfil.titulo}")
+	private String textoPerfil;
+	@Value("${texto.indexController.listar.titulo}")
+	private String textoListar;
+	
 	@GetMapping(value = { "/index", "/", "/home" })
 	public String index(Model model) {
-		model.addAttribute("titulo", "MERWEBO DIJE!");
+		model.addAttribute("titulo", textoIndex);
 		return "index";
 	}
 
@@ -28,13 +36,13 @@ public class IndexController {
 		usuario.setApellido("Hernandez");
 		usuario.setEmail("edgar.burrox5@gmail.com");
 		model.addAttribute("usuario", usuario);
-		model.addAttribute("titulo", "Que dice mi bro, " + usuario.getNombre());
+		model.addAttribute("titulo", textoPerfil + usuario.getNombre());
 		return "perfil";
 	}
 
 	@GetMapping(value = "/listar")
 	public String listar(Model model) {
-		model.addAttribute("titulo", "Un coñazo de gente");
+		model.addAttribute("titulo", textoListar);
 
 		return "listar";
 	}
